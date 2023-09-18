@@ -1,0 +1,49 @@
+## Docker commands used to build the application (from inside the project folder)
+# docker build -f Dockerfile -t techtrends:latest .
+
+## Docker commands used to run the application
+# TODO: insert the docker run command
+# docker run -d -p 7111:3111 techtrends:latest
+
+## Docker commands used to get the application logs
+# docker logs 58b
+
+## Logs from the container running the TechTrends application
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+WARNING:werkzeug:09/18/2023, 09:31:19,  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug:09/18/2023, 09:31:19,  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:09/18/2023, 09:31:43, 172.17.0.1 - - [18/Sep/2023 09:31:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:31:43, 172.17.0.1 - - [18/Sep/2023 09:31:43] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:31:43, 172.17.0.1 - - [18/Sep/2023 09:31:43] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:09/18/2023, 09:35:31, 172.17.0.1 - - [18/Sep/2023 09:35:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:35:31, 172.17.0.1 - - [18/Sep/2023 09:35:31] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2023, 09:35:33, "About Us" page retrieved!
+INFO:werkzeug:09/18/2023, 09:35:33, 172.17.0.1 - - [18/Sep/2023 09:35:33] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:35:33, 172.17.0.1 - - [18/Sep/2023 09:35:33] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2023, 09:35:36, Article "2020 CNCF Annual Report" retrieved!
+INFO:werkzeug:09/18/2023, 09:35:36, 172.17.0.1 - - [18/Sep/2023 09:35:36] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:35:36, 172.17.0.1 - - [18/Sep/2023 09:35:36] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2023, 09:35:38, Article "KubeCon + CloudNativeCon 2021" retrieved!
+INFO:werkzeug:09/18/2023, 09:35:38, 172.17.0.1 - - [18/Sep/2023 09:35:38] "GET /2 HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:35:38, 172.17.0.1 - - [18/Sep/2023 09:35:38] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/18/2023, 09:35:39, 172.17.0.1 - - [18/Sep/2023 09:35:39] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:35:39, 172.17.0.1 - - [18/Sep/2023 09:35:39] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2023, 09:35:56, Article "New Title" created!
+INFO:werkzeug:09/18/2023, 09:35:56, 172.17.0.1 - - [18/Sep/2023 09:35:56] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:09/18/2023, 09:35:56, 172.17.0.1 - - [18/Sep/2023 09:35:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:35:56, 172.17.0.1 - - [18/Sep/2023 09:35:56] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/18/2023, 09:39:49, 172.17.0.1 - - [18/Sep/2023 09:39:49] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:39:58, 172.17.0.1 - - [18/Sep/2023 09:39:58] "GET /healthz HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:40:03, 172.17.0.1 - - [18/Sep/2023 09:40:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:40:03, 172.17.0.1 - - [18/Sep/2023 09:40:03] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2023, 09:45:53, Article "2020 CNCF Annual Report" retrieved!
+INFO:werkzeug:09/18/2023, 09:45:53, 172.17.0.1 - - [18/Sep/2023 09:45:53] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2023, 09:45:53, 172.17.0.1 - - [18/Sep/2023 09:45:53] "GET /static/css/main.css HTTP/1.1" 304 -
+WARNING:app:09/18/2023, 09:45:56, Post ID "222" not found (404)
+INFO:werkzeug:09/18/2023, 09:45:56, 172.17.0.1 - - [18/Sep/2023 09:45:56] "GET /222 HTTP/1.1" 404 -
+INFO:werkzeug:09/18/2023, 09:45:56, 172.17.0.1 - - [18/Sep/2023 09:45:56] "GET /static/css/main.css HTTP/1.1" 304 -
