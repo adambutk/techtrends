@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import sys
 
 from flask import Flask, json, render_template, request, url_for, redirect, flash
 
@@ -7,16 +8,27 @@ from flask import Flask, json, render_template, request, url_for, redirect, flas
 # Counter for db connections
 db_connection_count = 0
 
+# Logging handlers
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.DEBUG)
+stderr_handler = logging.StreamHandler(sys.stderr)
+stderr_handler.setLevel(logging.ERROR)
+handlers = [stdout_handler, stderr_handler]
+
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
     global db_connection_count
-    connection = sqlite3.connect('database.db')
-    connection.row_factory = sqlite3.Row
-    # add one new connection to the counter
-    db_connection_count += 1
-    return connection
+    try:
+        connection = sqlite3.connect('database.db')
+        connection.row_factory = sqlite3.Row
+        # add one new connection to the counter
+        db_connection_count += 1
+        return connection
+    except sqlite3.OperationalError:
+        app.logger.error('ERROR - Unable to connect to database')
+        return None
 
 
 # Function to get a post using its ID
@@ -91,7 +103,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-        app.logger.warning(f'Post ID "{post_id}" not found (404)')
+        app.logger.debug(f'Post ID "{post_id}" not found (404)')
         return render_template('404.html'), 404
     else:
         app.logger.info(f'Article "{post["title"]}" retrieved!')
@@ -130,5 +142,5 @@ def create():
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(levelname)s:%(name)s:%(asctime)s, %(message)s',
-                        datefmt='%m/%d/%Y, %H:%M:%S')
+                        datefmt='%m/%d/%Y, %H:%M:%S', handlers=handlers)
     app.run(host='0.0.0.0', port='3111')
