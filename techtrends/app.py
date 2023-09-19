@@ -29,6 +29,19 @@ app.config['SECRET_KEY'] = 'your secret key'
 # Healthcheck endpoint
 @app.route('/healthz')
 def health():
+    # Connect to db
+    connection = get_db_connection()
+    # Respond with error if the connection to the database fails or if the required posts table does not exist.
+    try:
+        connection.execute('SELECT * FROM posts').fetchall()
+    except sqlite3.OperationalError:
+        connection.close()
+        return app.response_class(
+            response=json.dumps({"result": "ERROR - unhealthy"}),
+            status=500,
+            mimetype='application/json'
+        )
+    connection.close()
     # A JSON response containing the result: OK - healthy message
     # with a status code of 200
     response = app.response_class(
