@@ -44,6 +44,6 @@ INFO:werkzeug:09/18/2023, 09:40:03, 172.17.0.1 - - [18/Sep/2023 09:40:03] "GET /
 INFO:app:09/18/2023, 09:45:53, Article "2020 CNCF Annual Report" retrieved!
 INFO:werkzeug:09/18/2023, 09:45:53, 172.17.0.1 - - [18/Sep/2023 09:45:53] "GET /1 HTTP/1.1" 200 -
 INFO:werkzeug:09/18/2023, 09:45:53, 172.17.0.1 - - [18/Sep/2023 09:45:53] "GET /static/css/main.css HTTP/1.1" 304 -
-WARNING:app:09/18/2023, 09:45:56, Post ID "222" not found (404)
+DEBUG:app:09/18/2023, 09:45:56, Post ID "222" not found (404)
 INFO:werkzeug:09/18/2023, 09:45:56, 172.17.0.1 - - [18/Sep/2023 09:45:56] "GET /222 HTTP/1.1" 404 -
 INFO:werkzeug:09/18/2023, 09:45:56, 172.17.0.1 - - [18/Sep/2023 09:45:56] "GET /static/css/main.css HTTP/1.1" 304 -
