@@ -1,0 +1,9 @@
+apiVersion: v1
+name: techtrends
+description: Install TechTrends App Manifests
+keywords:
+- techtrends
+version: 1.0.0
+maintainers:
+- name: adambutk
+  email: adambutk@xyz.com

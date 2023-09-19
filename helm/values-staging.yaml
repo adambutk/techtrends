@@ -1,0 +1,39 @@
+namespace:
+  name: staging
+
+image:
+  repository: omstrat/techtrends
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 3
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 90Mi
+  limits:
+    cpu: 500m
+    memory: 128Mi
+
+rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 25%
+
+containerPort: 3111
+
+service:
+    port: 5111
+    targetPort: {{ .Values.containerPort }}
+    protocol: TCP
+    type: ClusterIP
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: {{ .Values.containerPort }}
+
+readinessProbe:
+    httpGet:
+        path: /healthz
+        port: {{ .Values.containerPort }}
