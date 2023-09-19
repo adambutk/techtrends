@@ -17,23 +17,23 @@ resources:
     memory: 128Mi
 
 rollingUpdate:
-    maxSurge: 25%
-    maxUnavailable: 25%
+  maxSurge: 25%
+  maxUnavailable: 25%
 
 containerPort: 3111
 
 service:
-    port: 4111
-    targetPort: {{ .Values.containerPort }}
-    protocol: TCP
-    type: ClusterIP
+  port: 4111
+  targetPort: 3111
+  protocol: TCP
+  type: ClusterIP
 
 livenessProbe:
   httpGet:
     path: /healthz
-    port: {{ .Values.containerPort }}
+    port: 3111
 
 readinessProbe:
-    httpGet:
-        path: /healthz
-        port: {{ .Values.containerPort }}
+  httpGet:
+    path: /healthz
+    port: 3111

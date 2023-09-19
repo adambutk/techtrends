@@ -25,26 +25,28 @@ spec:
         tag: latest
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: techtrends
-        ## Define the rules for the liveness probes
-        livenessProbe:
-           httpGet:
-             path: {{ .Values.livenessProbe.httpGet.path }}
-             port: {{ .Values.livenessProbe.httpGet.port }}
-        ## Define the rules for the readiness probes.
-        readinessProbe:
-           httpGet:
-             path: {{ .Values.readinessProbe.httpGet.path }}
-             port: {{ .Values.readinessProbe.httpGet.port }}
-        ## Set the resource requests and limits for an application.
-        resources: 
-        ## The pod will be allocated with 64 Mebibytes and 250 miliCPUs.
-          requests:
-            memory: {{ .Values.resources.requests.memory }}
-            cpu: {{ .Values.resources.requests.cpu }}
-        ## The pod will not surpass 128 Mebibytes and 500 miliCPUs.
-          limits:
-            memory: {{ .Values.resources.limits.memory }}
-            cpu: {{ .Values.resources.limits.cpu }}
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: techtrends
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          ## Define the rules for the liveness probes
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.httpGet.path }}
+              port: {{ .Values.livenessProbe.httpGet.port }}
+          ## Define the rules for the readiness probes.
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.readinessProbe.httpGet.path }}
+              port: {{ .Values.readinessProbe.httpGet.port }}
+          ## Set the resource requests and limits for an application.
+          resources:
+            ## The pod will be allocated with 64 Mebibytes and 250 miliCPUs.
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            ## The pod will not surpass 128 Mebibytes and 500 miliCPUs.
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
